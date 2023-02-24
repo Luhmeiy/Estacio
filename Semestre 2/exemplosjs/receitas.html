@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Catálogo de Receitas</title>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+			crossorigin="anonymous"
+		/>
+	</head>
+
+	<body onload="preencheCatalogo()">
+		<main class="container-fluid bg-warning">
+			<div
+				class="d-flex flex-wrap align-content-center justify-content-center"
+				id="pnlCatalogo"
+				style="height: 100vh"
+			></div>
+		</main>
+	</body>
+
+	<script>
+		const getListaIngredientes = (receita) => {
+			const listaIngredientesEl = document.createElement("ul");
+
+			receita.map((element) => {
+				const node = document.createElement("li");
+				node.append(`${element}`);
+				listaIngredientesEl.append(node);
+			});
+
+			return listaIngredientesEl;
+		};
+
+		const getCard = (receita) => {
+			// Create card
+			const cardEl = document.createElement("div");
+			cardEl.classList.add("card");
+			cardEl.classList.add("me-3");
+			cardEl.style.width = "450px";
+
+			const imgEl = document.createElement("img");
+			cardEl.classList.add("card-img-top");
+			imgEl.style.height = "200px";
+			imgEl.style.objectFit = "cover";
+			imgEl.src = receita.imagem;
+			imgEl.alt = receita.titulo;
+
+			const cardBodyEl = document.createElement("div");
+			cardBodyEl.classList.add("card-body");
+
+			cardEl.append(imgEl);
+			cardEl.append(cardBodyEl);
+
+			// Card body content
+			const cardTitleEl = document.createElement("h1");
+			cardTitleEl.classList.add("card-title");
+			cardTitleEl.innerText = receita.titulo;
+
+			const cardTextEl = document.createElement("div");
+			cardTextEl.classList.add("card-text");
+
+			cardBodyEl.append(cardTitleEl);
+			cardBodyEl.append(cardTextEl);
+
+			// Card text content
+			const hrEl = document.createElement("hr");
+
+			const paragraphEl = document.createElement("p");
+			paragraphEl.innerText = receita.preparo;
+
+			cardTextEl.append(getListaIngredientes(receita.ingredientes));
+			cardTextEl.append(hrEl);
+			cardTextEl.append(paragraphEl);
+
+			return cardEl;
+		};
+
+		const preencheCatalogo = () => {
+			const pnlCatalogoEl = document.getElementById("pnlCatalogo");
+
+			let receitas;
+
+			var xhttp = new XMLHttpRequest();
+
+			xhttp.onreadystatechange = function () {
+				if (this.readyState == 4 && this.status == 200) {
+					receitas = JSON.parse(this.response);
+
+					receitas.receitas.map((element) => {
+						pnlCatalogoEl.append(getCard(element));
+					});
+				}
+			};
+			xhttp.open("GET", "receitas.json", true);
+			xhttp.send();
+		};
+	</script>
+</html>
