@@ -29,7 +29,11 @@ export class ControleLivro {
 		return livros;
 	}
 
-	incluir(livro: Livro) {}
+	incluir(livro: Livro) {
+		livro.codigo = livros.length + 1;
+
+		livros.push(livro);
+	}
 
 	excluir(codigo: number) {
 		const livroIndex = livros.findIndex((livro) => livro.codigo === codigo);
