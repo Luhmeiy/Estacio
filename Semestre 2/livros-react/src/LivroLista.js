@@ -19,7 +19,7 @@ const LivroLista = () => {
 	};
 
 	return (
-		<main className="w-75 text-start">
+		<main className="w-75 text-start mx-auto">
 			<h1>Catálogo de Livros</h1>
 
 			<table className="table">
