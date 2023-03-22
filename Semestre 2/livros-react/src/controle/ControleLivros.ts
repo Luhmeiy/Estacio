@@ -4,7 +4,7 @@ const livros: Array<Livro> = [
 	{
 		codigo: 1,
 		codEditora: 1,
-		titulo: "User a Cabeça: Java",
+		titulo: "Use a Cabeça: Java",
 		resumo: "Use a Cabeça! Java é uma experiência completa de aprendizado em programação orientada a objetos (OO) e Java.",
 		autores: ["Bert Bates", "Kathy Sierra"],
 	},
@@ -31,5 +31,8 @@ export class ControleLivro {
 
 	incluir(livro: Livro) {}
 
-	excluir(codigo: number) {}
+	excluir(codigo: number) {
+		const livroIndex = livros.findIndex((livro) => livro.codigo === codigo);
+		return livros.splice(livroIndex, 1);
+	}
 }
