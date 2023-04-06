@@ -1,10 +1,15 @@
-import type { NextPage } from "next";
-import styles from "@/styles/Home.module.css";
-import React, { useEffect, useState } from "react";
+// classes / components
 import { Livro } from "@/classes/modelo/Livro";
-import Head from "next/head";
-import { Menu } from "@/componentes/Menu";
 import { LinhaLivro } from "@/componentes/LinhaLivro";
+import { Menu } from "@/componentes/Menu";
+
+// React / Next
+import { useEffect, useState } from "react";
+import type { NextPage } from "next";
+import Head from "next/head";
+
+// styles
+import styles from "@/styles/Home.module.css";
 
 const baseURL = "http://localhost:3000/api/livros";
 
@@ -19,12 +24,8 @@ const excluirLivro = async (codigo: number) => {
 	await fetch(`${baseURL}/${codigo}`, {
 		method: "DELETE",
 	})
-		.then((result) => {
-			console.log("Sucesso!");
-		})
-		.catch((err) => {
-			console.log("Erro");
-		});
+		.then((result) => console.log("Sucesso!"))
+		.catch((err) => console.log(err));
 };
 
 const LivroLista: NextPage = () => {
