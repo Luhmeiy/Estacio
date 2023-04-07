@@ -37,6 +37,7 @@ export class ControleLivro {
 
 	excluir(codigo: number) {
 		const livroIndex = livros.findIndex((livro) => livro.codigo === codigo);
+
 		return livros.splice(livroIndex, 1);
 	}
 }

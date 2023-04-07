@@ -3,10 +3,10 @@ import { ControleLivro } from "./controle/ControleLivros";
 import { ControleEditora } from "./controle/ControleEditora";
 import { useNavigate } from "react-router-dom";
 
-const LivroDados = () => {
-	const controleLivro = new ControleLivro();
-	const controleEditora = new ControleEditora();
+const controleLivro = new ControleLivro();
+const controleEditora = new ControleEditora();
 
+const LivroDados = () => {
 	const opcoes = controleEditora
 		.getEditoras()
 		.map((editora) => ({ value: editora.codEditora, text: editora.nome }));
@@ -19,7 +19,7 @@ const LivroDados = () => {
 	const navigate = useNavigate();
 
 	const tratarCombo = (evento) => {
-		const value = parseInt(evento.target.value);
+		const value = Number(evento.target.value);
 		setCodEditora(value);
 	};
 
@@ -63,7 +63,6 @@ const LivroDados = () => {
 					</label>
 
 					<textarea
-						type="text"
 						id="resumo"
 						onChange={(e) => setResumo(e.target.value)}
 						className="form-control"
@@ -97,7 +96,6 @@ const LivroDados = () => {
 					</label>
 
 					<textarea
-						type="text"
 						id="autores"
 						onChange={(e) => setAutores(e.target.value)}
 						className="form-control"

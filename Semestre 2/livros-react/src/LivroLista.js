@@ -2,17 +2,16 @@ import { useEffect, useState } from "react";
 import LinhaLivro from "./components/LinhaLivro";
 import { ControleLivro } from "./controle/ControleLivros";
 
-const LivroLista = () => {
-	// eslint-disable-next-line react-hooks/exhaustive-deps
-	const controleLivro = new ControleLivro();
+const controleLivro = new ControleLivro();
 
+const LivroLista = () => {
 	const [livros, setLivros] = useState();
 	const [carregado, setCarregado] = useState(false);
 
 	useEffect(() => {
 		setLivros(controleLivro.obterLivros());
 		setCarregado(true);
-	}, [controleLivro]);
+	}, [carregado]);
 
 	const excluir = (codigo) => {
 		controleLivro.excluir(codigo);
