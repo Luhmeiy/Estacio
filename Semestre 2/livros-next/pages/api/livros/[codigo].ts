@@ -7,12 +7,12 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 			const codigo = Number(req.query.codigo);
 			controleLivro.excluir(codigo);
 
-			res.status(200).send({ mensagem: "Livro excluído com sucesso!" });
+			res.status(200).json({ mensagem: "Livro excluído com sucesso!" });
 		} else {
-			res.status(405).send("Método não permitido.");
+			res.status(405).json({ mensagem: "Método não permitido." });
 		}
-	} catch (err) {
-		console.log(err);
-		res.status(500).send("Exceção ocorrida no servidor.");
+	} catch (error) {
+		console.log(error);
+		res.status(500).json({ mensagem: "Exceção ocorrida no servidor." });
 	}
 }

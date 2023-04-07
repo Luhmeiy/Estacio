@@ -9,12 +9,12 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 				nome: controleEditora.getNomeEditora(codEditora),
 			};
 
-			res.status(200).send(JSON.stringify(nomeEditora));
+			res.status(200).json(nomeEditora);
 		} else {
-			res.status(405).send("Método não permitido.");
+			res.status(405).json({ mensagem: "Método não permitido." });
 		}
-	} catch (err) {
-		console.log(err);
-		res.status(500).send("Exceção ocorrida no servidor.");
+	} catch (error) {
+		console.log(error);
+		res.status(500).json({ mensagem: "Exceção ocorrida no servidor." });
 	}
 }

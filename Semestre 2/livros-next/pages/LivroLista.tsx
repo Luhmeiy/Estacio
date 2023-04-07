@@ -25,7 +25,7 @@ const excluirLivro = async (codigo: number) => {
 		method: "DELETE",
 	})
 		.then((result) => console.log("Sucesso!"))
-		.catch((err) => console.log(err));
+		.catch((error) => console.log(error));
 };
 
 const LivroLista: NextPage = () => {
@@ -66,7 +66,16 @@ const LivroLista: NextPage = () => {
 			<main className={styles.main}>
 				<h1 className="title">Lista de Livros</h1>
 
-				<table>
+				<table className="table">
+					<thead className="table-dark">
+						<tr>
+							<th>Título</th>
+							<th>Resumo</th>
+							<th>Editora</th>
+							<th>Autores</th>
+						</tr>
+					</thead>
+
 					<tbody>
 						{livros?.map((livro) => {
 							return (

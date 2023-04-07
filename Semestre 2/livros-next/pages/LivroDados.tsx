@@ -1,6 +1,5 @@
 // classes / components
 import { ControleEditora } from "@/classes/controle/ControleEditora";
-import { ControleLivro } from "@/classes/controle/ControleLivros";
 import { Livro } from "@/classes/modelo/Livro";
 import { Menu } from "@/componentes/Menu";
 
@@ -23,7 +22,7 @@ const incluirLivro = async (livro: Livro) => {
 		body: JSON.stringify(livro),
 	})
 		.then((results) => console.log("Sucesso!"))
-		.catch((err) => console.log(err));
+		.catch((error) => console.log(error));
 };
 
 const LivroDados: NextPage = () => {
@@ -91,6 +90,7 @@ const LivroDados: NextPage = () => {
 							id="titulo"
 							onChange={(e) => setTitulo(e.target.value)}
 							className="form-control"
+							required
 						/>
 					</div>
 
@@ -103,19 +103,21 @@ const LivroDados: NextPage = () => {
 							id="resumo"
 							onChange={(e) => setResumo(e.target.value)}
 							className="form-control"
+							required
 						/>
 					</div>
 
 					<div className="mb-3">
-						<label htmlFor="editora" className="form-label">
+						<label htmlFor="editoras" className="form-label">
 							Editora
 						</label>
 
 						<select
-							name="cars"
-							id="cars"
+							name="editoras"
+							id="editoras"
 							onChange={(e) => tratarCombo(e)}
 							className="form-control"
+							required
 						>
 							{opcoes.map((opcao) => {
 								return (
@@ -139,6 +141,7 @@ const LivroDados: NextPage = () => {
 							id="autores"
 							onChange={(e) => setAutores(e.target.value)}
 							className="form-control"
+							required
 						/>
 					</div>
 
