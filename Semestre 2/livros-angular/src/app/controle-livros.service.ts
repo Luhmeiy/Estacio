@@ -39,6 +39,7 @@ export class ControleLivrosService {
         livro.codigo = this.livros.length + 1;
 
         this.livros.push(livro);
+        console.log(this.livros);
     }
 
     excluir(codigo: number) {

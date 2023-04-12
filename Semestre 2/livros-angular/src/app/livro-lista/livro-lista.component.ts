@@ -10,11 +10,11 @@ import { ControleLivrosService } from "../controle-livros.service";
     styleUrls: ["./livro-lista.component.css"],
 })
 export class LivroListaComponent implements OnInit {
-    editoras: Array<Editora> = [];
-    livros: Array<Livro> = [];
+    public editoras: Array<Editora> = [];
+    public livros: Array<Livro> = [];
 
-    servEditora = new ControleEditoraService();
-    servLivros = new ControleLivrosService();
+    private servEditora = new ControleEditoraService();
+    private servLivros = new ControleLivrosService();
 
     ngOnInit() {
         this.editoras = this.servEditora.getEditoras();
