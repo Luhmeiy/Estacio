@@ -15,10 +15,11 @@ export class LivroDadosComponent implements OnInit {
     public autoresForm: string = "";
     public editoras: Array<Editora> = [];
 
-    private servEditora = new ControleEditoraService();
-    private servLivros = new ControleLivrosService();
-
-    constructor(private router: Router) {}
+    constructor(
+        private servEditora: ControleEditoraService,
+        private servLivros: ControleLivrosService,
+        private router: Router
+    ) {}
 
     ngOnInit() {
         this.editoras = this.servEditora.getEditoras();

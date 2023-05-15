@@ -39,13 +39,13 @@ export class ControleLivrosService {
         livro.codigo = this.livros.length + 1;
 
         this.livros.push(livro);
-        console.log(this.livros);
     }
 
     excluir(codigo: number) {
         const livroIndex = this.livros.findIndex(
             (livro) => livro.codigo === codigo
         );
+
         return this.livros.splice(livroIndex, 1);
     }
 }

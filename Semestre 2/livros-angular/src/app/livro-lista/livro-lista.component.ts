@@ -13,8 +13,10 @@ export class LivroListaComponent implements OnInit {
     public editoras: Array<Editora> = [];
     public livros: Array<Livro> = [];
 
-    private servEditora = new ControleEditoraService();
-    private servLivros = new ControleLivrosService();
+    constructor(
+        private servEditora: ControleEditoraService,
+        private servLivros: ControleLivrosService
+    ) {}
 
     ngOnInit() {
         this.editoras = this.servEditora.getEditoras();
