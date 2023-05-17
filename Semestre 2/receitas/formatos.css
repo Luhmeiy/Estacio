@@ -15,7 +15,7 @@ body {
 }
 
 #main {
-	height: calc(100vh - 101px);
+	min-height: calc(100vh - 101px);
 }
 
 .hero {
