@@ -23,7 +23,7 @@ const shuffle = (array) => {
 };
 
 const bubble_sort = (array) => {
-	array.forEach((element) => {
+	array.forEach(() => {
 		array.forEach((element, index) => {
 			if (element > array[index + 1]) {
 				swap(array, index, index + 1);
@@ -35,7 +35,7 @@ const bubble_sort = (array) => {
 };
 
 const selection_sort = (array) => {
-	array.forEach((element, index) => {
+	array.forEach((_, index) => {
 		let min = index;
 
 		for (let i = min; i < array.length; i++) {
